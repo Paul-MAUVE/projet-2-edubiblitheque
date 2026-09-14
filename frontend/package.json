@@ -1,0 +1,67 @@
+{
+  "name": "etudiant-frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "e2e:coverage": "ng run etudiant-frontend:e2e-coverage",
+    "e2e:coverage:check": "npm run e2e:coverage && nyc report --check-coverage --lines 80 --functions 80 --branches 80 --statements 80"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/cdk": "^19.2.19",
+    "@angular/common": "^19.2.0",
+    "@angular/compiler": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/forms": "^19.2.0",
+    "@angular/material": "^19.2.19",
+    "@angular/platform-browser": "^19.2.0",
+    "@angular/platform-browser-dynamic": "^19.2.0",
+    "@angular/router": "^19.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.0.7",
+    "@angular/cli": "^19.2.16",
+    "@angular/compiler-cli": "^19.2.0",
+    "@cypress/code-coverage": "^4.0.3",
+    "@cypress/schematic": "^4.3.0",
+    "etudiant-e2e-coverage": "file:tools/e2e-coverage-builder",
+    "@types/jest": "^29.5.4",
+    "cypress": "16.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-preset-angular": "^14.5.1",
+    "istanbul-lib-instrument": "^6.0.3",
+    "nyc": "^18.0.0",
+    "typescript": "~5.7.2"
+  },
+  "nyc": {
+    "all": true,
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.spec.ts",
+      "src/main.ts"
+    ],
+    "reporter": [
+      "text-summary",
+      "html",
+      "lcov"
+    ],
+    "report-dir": "coverage/e2e"
+  }
+}

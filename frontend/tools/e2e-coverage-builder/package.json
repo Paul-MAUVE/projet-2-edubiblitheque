@@ -1,0 +1,6 @@
+{
+  "name": "etudiant-e2e-coverage",
+  "version": "1.0.0",
+  "private": true,
+  "builders": "builders.json"
+}

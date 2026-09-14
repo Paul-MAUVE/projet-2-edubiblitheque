@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/architect/src/builders-schema.json",
+  "builders": {
+    "dev-server": {
+      "implementation": "./dev-server.js",
+      "schema": "./schema.json",
+      "description": "Angular development server with Istanbul instrumentation for Cypress E2E coverage."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<h1>Détail de l'étudiant</h1>
+
+@if (student) {
+  <p>ID : {{ student.id }}</p>
+  <p>Prénom : {{ student.firstName }}</p>
+  <p>Nom : {{ student.lastName }}</p>
+  <li><a [routerLink]="['/students', student.id, 'edit']">Modifier</a></li>
+  <li><a href="#" (click)="onDelete(student.id); $event.preventDefault()">Supprimer</a></li>
+  <li><a routerLink="/students">Retour</a></li>
+}

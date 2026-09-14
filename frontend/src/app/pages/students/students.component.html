@@ -1,0 +1,12 @@
+<h1>Liste des étudiants</h1>
+<button routerLink="./create" class="btn btn-primary" >
+          Créer un étudiant
+</button>
+<ul>
+  @for (student of students; track student.id) {
+    <li>
+      {{ student.id }} - {{ student.firstName }} {{ student.lastName }} 
+      <a [routerLink]="['/students', student.id]">Voir</a>
+    </li>
+  }
+</ul>
