@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StudentController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">etudiant-backend</a> &gt; <a href="index.source.html" class="el_package">com.openclassrooms.etudiant.controller</a> &gt; <span class="el_source">StudentController.java</span></div><h1>StudentController.java</h1><pre class="source lang-java linenums">package com.openclassrooms.etudiant.controller;
+
+import com.openclassrooms.etudiant.dto.StudentRequestDTO;
+import com.openclassrooms.etudiant.dto.StudentResponseDTO;
+import com.openclassrooms.etudiant.service.StudentService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/api/students&quot;)
+@RequiredArgsConstructor
+public class StudentController {
+
+    private final StudentService studentService;
+
+    @PostMapping
+    public ResponseEntity&lt;StudentResponseDTO&gt; createStudent(
+            @Valid @RequestBody StudentRequestDTO studentRequestDTO) {
+
+<span class="fc" id="L25">        StudentResponseDTO response =</span>
+<span class="fc" id="L26">                studentService.createStudent(studentRequestDTO);</span>
+
+<span class="fc" id="L28">        return new ResponseEntity&lt;&gt;(response, HttpStatus.CREATED);</span>
+    }
+    @GetMapping
+    public ResponseEntity&lt;List&lt;StudentResponseDTO&gt;&gt; getAllStudents() {
+<span class="fc" id="L32">        return ResponseEntity.ok(studentService.getAllStudents());</span>
+    }
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;StudentResponseDTO&gt; getStudentById(@PathVariable Long id) {
+<span class="fc" id="L36">        return ResponseEntity.ok(studentService.getStudentById(id));</span>
+    }
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;StudentResponseDTO&gt; updateStudent(
+        @PathVariable Long id,
+        @Valid @RequestBody StudentRequestDTO studentRequestDTO) {
+<span class="fc" id="L42">        return ResponseEntity.ok(</span>
+<span class="fc" id="L43">            studentService.updateStudent(id, studentRequestDTO)</span>
+        );
+    }
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteStudent(@PathVariable Long id) {
+<span class="fc" id="L48">        studentService.deleteStudent(id);</span>
+<span class="fc" id="L49">        return ResponseEntity.noContent().build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
